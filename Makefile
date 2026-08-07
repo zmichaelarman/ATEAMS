@@ -72,15 +72,19 @@ Bernoulli: FORCE
 	@cd test && ./profile.models.Bernoulli.sh 4 7 4
 	@cd test && ./profile.models.Bernoulli.sh 19 22 2
 
+BernoulliSite: FORCE
+	@cd test && ./profile.models.BernoulliSite.sh 3 6 4
+	@cd test && ./profile.models.BernoulliSite.sh 10 13 2
+
 InvasionPercolation: FORCE
 	@cd test && ./profile.models.IP.sh 6 9 4
 	@cd test && ./profile.models.IP.sh 99 103 2
 
 
-profile: Glauber SwendsenWang Nienhuis InvadedCluster
+profile: Glauber SwendsenWang Nienhuis InvadedCluster BernoulliSite
 
 test: FORCE
-	
+	@cd test && ./test.models.BernoulliSite.sh
 
 gauntlet: FORCE test profile
 

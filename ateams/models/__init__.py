@@ -6,6 +6,7 @@
 """
 
 from .Bernoulli import Bernoulli
+from .BernoulliSite import BernoulliSite
 from .SwendsenWang import SwendsenWang
 from .InvadedCluster import InvadedCluster
 from .Nienhuis import Nienhuis
@@ -22,5 +23,6 @@ __all__ = [
 	"Glauber",
 	"Nienhuis",
 	"InvasionPercolation",
-	"Bernoulli"
+	"Bernoulli",
+	"BernoulliSite"
 ]

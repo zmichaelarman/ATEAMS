@@ -3,3 +3,4 @@ numpy
 tqdm
 packaging
 lz4
+gudhi

@@ -18,5 +18,11 @@ dependencies = [
     "lz4"
 ]
 
+# Only `ateams.models.BernoulliSite` needs GUDHI, so
+# `import ateams` works fine without it. Kept as an extra so it isn't forced on
+# everything else.
+[project.optional-dependencies]
+site-percolation = ["gudhi"]
+
 [tool.setuptools]
 py-modules = ["ateams"]
