@@ -141,8 +141,14 @@ class BernoulliSite():
 		"""
 		filtration, m, occupied = self._filtrate()
 
+		################################################################################
 		# A cell arrives when its last vertex does.
-		values = filtration[self.padded].max(axis=1).astype(float)
+		#values = filtration[self.padded].max(axis=1).astype(float)
+		#replace with:
+		arrival = np.empty_like(filtration)
+		arrival[filtration] = np.arange(self.siteCount)
+		values = arrival[self.padded].max(axis=1)
+		################################################################################
 
 		for s, v in zip(self.simplices, values): self.tree.assign_filtration(s, v)
 
@@ -153,7 +159,11 @@ class BernoulliSite():
 		# Giant cycles never die. Keep those born before the occupied vertices ran
 		# out.
 		pairs = self.tree.persistence_intervals_in_dimension(self.dimension)
-		giants = filtration[np.where(np.isinf(pairs[:,1]))[0]]
+		################################################################################
+		#giants = filtration[np.where(np.isinf(pairs[:,1]))[0]]
+		#replace with:
+		giants = pairs[np.isinf(pairs[:,1]), 0].astype(np.int64)
+		#################################################################################
 
 		return occupied.astype(np.uint8), giants[giants < m]
 
