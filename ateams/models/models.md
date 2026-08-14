@@ -5,3 +5,5 @@ The `SwendsenWang`, `InvadedCluster`, and `Nienhuis` models require performant s
 
 The documentation for each model comes with performance information, viewable by clicking (e.g.) the "Performance over $\mathbb T^2_N$" button. Each configuration completed 100 iterations on Pangolin, a Dell Precision 5280 workstation with an 18-core Intel Xeon W-2295 CPU clocked at 1.3GHz.
 
+
+Where `Bernoulli` gives each cell its own trial, `BernoulliSite` puts the randomness on the _vertices_: each is occupied with probability $p$, and a cell joins the subcomplex when all of its vertices are. This is site percolation, generalized to higher dimensions, and it's what we run on the permutohedral lattice (see `ateams.complexes.Permutohedral`). The giant cycles depend only on which cells are included, so the persistence routines are the same ones `Bernoulli` uses.
